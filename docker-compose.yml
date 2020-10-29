@@ -1,0 +1,21 @@
+version: "3"
+services:
+  # In Docker
+  # - TEST_POSTGRES_URI=postgres://prisma:prisma@postgres/
+  # Outside Docker
+  # - TEST_POSTGRES_URI=postgres://prisma:prisma@localhost:1111/gigforme_dev
+
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: bo_stad_dev
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "1111:5432"
+
+volumes:
+  postgres:
